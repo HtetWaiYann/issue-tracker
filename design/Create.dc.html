@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tracker · New issue</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4338CA}a:hover{color:#312E81}
+input::placeholder,textarea::placeholder{color:#6B6B76}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #18181B; background: #FFFFFF; min-height: 860px; position: relative; font-size: 14px; overflow: hidden">
+
+<div aria-hidden="true" style="display: flex; flex-wrap: wrap; min-height: 860px">
+<div style="flex: 1 1 220px; background: #F7F7F8; border-right: 1px solid #E6E6EA; padding: 20px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px">
+<div style="height: 24px; width: 120px; background: #E4E4EA; border-radius: 6px"></div>
+<div style="height: 32px; background: #ECECF1; border-radius: 8px"></div>
+<div style="height: 14px; width: 70%; background: #ECECF1; border-radius: 4px"></div>
+<div style="height: 14px; width: 60%; background: #ECECF1; border-radius: 4px"></div>
+<div style="height: 14px; width: 75%; background: #E4E4EA; border-radius: 4px"></div>
+</div>
+<div style="flex: 999 1 560px; min-width: 0; padding: 24px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<div style="height: 26px; width: 180px; background: #ECECF1; border-radius: 6px"></div>
+<div style="height: 34px; width: 60%; background: #F3F3F6; border-radius: 8px"></div>
+<div style="height: 36px; background: #F3F3F6; border-radius: 6px"></div>
+<div style="height: 36px; background: #F7F7F9; border-radius: 6px"></div>
+<div style="height: 36px; background: #F3F3F6; border-radius: 6px"></div>
+<div style="height: 36px; background: #F7F7F9; border-radius: 6px"></div>
+<div style="height: 36px; background: #F3F3F6; border-radius: 6px"></div>
+<div style="height: 36px; background: #F7F7F9; border-radius: 6px"></div>
+</div>
+</div>
+
+<div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(24,24,27,0.45); display: flex; align-items: flex-start; justify-content: center; padding: 72px 16px; box-sizing: border-box">
+<form role="dialog" aria-modal="true" aria-labelledby="dlg-title" style="width: 100%; max-width: 640px; background: #FFFFFF; border-radius: 14px; box-shadow: 0 24px 60px rgba(0,0,0,0.25); display: flex; flex-direction: column">
+<div style="display: flex; align-items: center; gap: 10px; padding: 16px 20px; border-bottom: 1px solid #EFEFF2">
+<span style="padding: 3px 8px; background: #F1F1F4; border-radius: 6px; font-size: 12px; color: #3F3F46">Web Platform</span>
+<h2 id="dlg-title" style="margin: 0; font-size: 15px; font-weight: 600">New issue</h2>
+<span style="margin-left: auto; font-size: 12px; color: #5F5F6B">Draft saved</span>
+<a href="Main.dc.html" aria-label="Close" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #5F5F6B; text-decoration: none; font-size: 18px">×</a>
+</div>
+
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-title" style="font-size: 13px; font-weight: 500">Title</label>
+<input id="f-title" aria-invalid="true" aria-describedby="f-title-err" placeholder="Fix" style="height: 40px; border: 1.5px solid #DC2626; border-radius: 8px; padding: 0 12px; font: inherit; font-size: 15px">
+<span id="f-title-err" style="font-size: 12px; color: #B91C1C">Title must be at least 5 characters (from server)</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="f-desc" style="font-size: 13px; font-weight: 500">Description</label>
+<textarea id="f-desc" rows="4" placeholder="Add details in markdown…" style="border: 1px solid #D4D4DC; border-radius: 8px; padding: 10px 12px; font: inherit; font-size: 14px; resize: vertical"></textarea>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-status" style="font-size: 13px; font-weight: 500">Status</label><select id="f-status" style="height: 38px; border: 1px solid #D4D4DC; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 13px; background: #FFFFFF"><option>Todo</option><option>Backlog</option><option>In Progress</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-prio" style="font-size: 13px; font-weight: 500">Priority</label><select id="f-prio" style="height: 38px; border: 1px solid #D4D4DC; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 13px; background: #FFFFFF"><option>Medium</option><option>Urgent</option><option>High</option><option>Low</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="f-who" style="font-size: 13px; font-weight: 500">Assignee</label><select id="f-who" style="height: 38px; border: 1px solid #D4D4DC; border-radius: 8px; padding: 0 10px; font: inherit; font-size: 13px; background: #FFFFFF"><option>Alex Kim (me)</option><option>Mia Rossi</option><option>Jun Li</option><option>Sara Park</option><option>Unassigned</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 13px; font-weight: 500">Labels</span><div style="display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-height: 38px"><span style="padding: 4px 10px; border-radius: 12px; background: #EEF0FF; color: #312E81; font-size: 12px">bug</span><button type="button" style="height: 28px; padding: 0 10px; border: 1px dashed #B4B4BE; background: #FFFFFF; border-radius: 12px; font: inherit; font-size: 12px; color: #3F3F46; cursor: pointer">+ Add label</button></div></div>
+</div>
+</div>
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 14px 20px; border-top: 1px solid #EFEFF2; background: #FAFAFB; border-radius: 0 0 14px 14px">
+<label style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #3F3F46; min-height: 36px"><input type="checkbox" style="width: 16px; height: 16px; accent-color: #4F46E5">Create more</label>
+<span style="font-size: 12px; color: #5F5F6B">Esc to close · ⌘Enter to submit</span>
+<a href="Main.dc.html" style="margin-left: auto; height: 38px; display: flex; align-items: center; padding: 0 14px; border: 1px solid #D4D4DC; border-radius: 8px; color: #3F3F46; text-decoration: none; font-size: 13px">Cancel</a>
+<button type="submit" style="height: 38px; padding: 0 16px; border: 0; background: #4F46E5; color: #FFFFFF; border-radius: 8px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer">Create issue</button>
+</div>
+</form>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":860}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

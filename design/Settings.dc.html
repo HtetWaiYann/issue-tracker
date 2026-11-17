@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tracker · Settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4338CA}a:hover{color:#312E81}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #18181B; background: #FFFFFF; min-height: 860px; display: flex; flex-wrap: wrap; font-size: 14px">
+
+<nav aria-label="Main" style="flex: 1 1 220px; background: #F7F7F8; border-right: 1px solid #E6E6EA; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px; box-sizing: border-box">
+<div style="display: flex; align-items: center; gap: 10px; padding: 4px 8px 14px">
+<div aria-hidden="true" style="width: 28px; height: 28px; border-radius: 8px; background: #4F46E5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px">T</div>
+<div style="font-weight: 600; font-size: 15px">Tracker</div>
+<div style="margin-left: auto; font-size: 12px; color: #5F5F6B">Web Platform</div>
+</div>
+<a href="Palette.dc.html" style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 10px; border: 1px solid #E6E6EA; border-radius: 8px; background: #FFFFFF; color: #5F5F6B; font-size: 13px; text-decoration: none; margin-bottom: 10px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span>Search or run a command</span><span style="margin-left: auto; font-size: 11px; border: 1px solid #E6E6EA; border-radius: 4px; padding: 1px 5px">⌘K</span></a>
+<a href="Main.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">Inbox<span style="margin-left: auto; font-size: 12px; color: #5F5F6B">4</span></a>
+<a href="Main.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">My issues<span style="margin-left: auto; font-size: 12px; color: #5F5F6B">23</span></a>
+<a href="Main.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">All issues</a>
+<a href="Board.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">Board</a>
+<a href="Settings.dc.html" aria-current="page" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; background: #E9E9F2; color: #18181B; font-weight: 500; text-decoration: none">Settings</a>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 0; border-top: 1px solid #E6E6EA">
+<div aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">AK</div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 13px">Alex Kim</span><span style="font-size: 12px; color: #B45309">● Offline</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 20px 28px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 16px">
+<div role="status" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 10px 14px; background: #FFF7ED; border: 1px solid #FED7AA; border-radius: 10px; color: #9A3412; font-size: 13px">
+<strong style="font-weight: 600">You're offline.</strong><span>3 changes are queued and will sync when you reconnect.</span>
+<button type="button" style="margin-left: auto; height: 32px; padding: 0 12px; border: 1px solid #FDBA74; background: #FFFFFF; color: #9A3412; border-radius: 8px; font: inherit; font-size: 13px; cursor: pointer">Retry now</button>
+</div>
+
+<h1 style="margin: 0; font-size: 20px; font-weight: 600">Settings</h1>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; align-items: start">
+
+<section aria-labelledby="s-pref" style="border: 1px solid #E6E6EA; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="s-pref" style="margin: 0; font-size: 15px; font-weight: 600">Preferences</h2>
+<fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px">
+<legend style="font-size: 13px; font-weight: 500; margin-bottom: 8px">Theme</legend>
+<div style="display: flex; gap: 8px">
+<label style="flex: 1; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1.5px solid #4F46E5; background: #EEF0FF; border-radius: 8px; font-size: 13px"><input type="radio" name="theme" checked="" style="accent-color: #4F46E5">Light</label>
+<label style="flex: 1; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #D4D4DC; border-radius: 8px; font-size: 13px"><input type="radio" name="theme" style="accent-color: #4F46E5">Dark</label>
+<label style="flex: 1; display: flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 12px; border: 1px solid #D4D4DC; border-radius: 8px; font-size: 13px"><input type="radio" name="theme" style="accent-color: #4F46E5">System</label>
+</div>
+</fieldset>
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" checked="" style="width: 18px; height: 18px; accent-color: #4F46E5">Notify me when an issue assigned to me changes</label>
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" checked="" style="width: 18px; height: 18px; accent-color: #4F46E5">Show live toasts for teammates' changes</label>
+<label style="display: flex; align-items: center; gap: 10px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" style="width: 18px; height: 18px; accent-color: #4F46E5">Compact list density</label>
+</section>
+
+<section aria-labelledby="s-queue" style="border: 1px solid #E6E6EA; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<h2 id="s-queue" style="margin: 0; font-size: 15px; font-weight: 600">Offline queue <span style="font-weight: 400; color: #5F5F6B; font-size: 13px">3 pending</span></h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 13px">
+<li style="display: flex; gap: 8px; padding: 8px 10px; background: #FAFAFB; border-radius: 8px"><span style="color: #5F5F6B">ISS-1031</span>Status → In Review<span style="margin-left: auto; color: #5F5F6B">12s ago</span></li>
+<li style="display: flex; gap: 8px; padding: 8px 10px; background: #FAFAFB; border-radius: 8px"><span style="color: #5F5F6B">ISS-1031</span>New comment<span style="margin-left: auto; color: #5F5F6B">40s ago</span></li>
+<li style="display: flex; gap: 8px; padding: 8px 10px; background: #FAFAFB; border-radius: 8px"><span style="color: #5F5F6B">ISS-0998</span>Priority → High<span style="margin-left: auto; color: #5F5F6B">1m ago</span></li>
+</ol>
+</section>
+
+<section aria-labelledby="s-lab" style="border: 1px solid #C7D2FE; background: #FAFAFF; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="s-lab" style="margin: 0; font-size: 15px; font-weight: 600">Performance lab</h2>
+<span style="font-size: 12px; color: #5F5F6B">Change a setting, then record in the Profiler and compare.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="l-size" style="display: flex; font-size: 13px; font-weight: 500">Dataset size<span style="margin-left: auto; color: #5F5F6B; font-weight: 400">10,000 issues</span></label>
+<input id="l-size" type="range" min="100" max="50000" step="100" style="accent-color: #4F46E5">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="l-lat" style="display: flex; font-size: 13px; font-weight: 500">Network latency<span style="margin-left: auto; color: #5F5F6B; font-weight: 400">800 ms</span></label>
+<input id="l-lat" type="range" min="0" max="3000" step="50" style="accent-color: #4F46E5">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="l-fail" style="display: flex; font-size: 13px; font-weight: 500">API failure rate<span style="margin-left: auto; color: #5F5F6B; font-weight: 400">10%</span></label>
+<input id="l-fail" type="range" min="0" max="100" step="5" style="accent-color: #4F46E5">
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<label for="l-sock" style="display: flex; font-size: 13px; font-weight: 500">Live updates per second<span style="margin-left: auto; color: #5F5F6B; font-weight: 400">5</span></label>
+<input id="l-sock" type="range" min="0" max="50" step="1" style="accent-color: #4F46E5">
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px">
+<label style="display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" checked="" style="width: 18px; height: 18px; accent-color: #4F46E5">Virtualize list</label>
+<label style="display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" checked="" style="width: 18px; height: 18px; accent-color: #4F46E5">Memoize rows</label>
+<label style="display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" style="width: 18px; height: 18px; accent-color: #4F46E5">Deferred search</label>
+<label style="display: flex; align-items: center; gap: 8px; min-height: 36px; font-size: 13px"><input type="checkbox" role="switch" style="width: 18px; height: 18px; accent-color: #4F46E5">Split contexts</label>
+</div>
+<button type="button" style="align-self: flex-start; height: 36px; padding: 0 14px; border: 0; background: #4F46E5; color: #FFFFFF; border-radius: 8px; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer">Regenerate data</button>
+</section>
+
+<section aria-labelledby="s-bugs" style="border: 1px solid #E6E6EA; border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 8px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<h2 id="s-bugs" style="margin: 0; font-size: 15px; font-weight: 600">Bug drills</h2>
+<span style="font-size: 12px; color: #5F5F6B">Turn one on, then find it with DevTools only. No peeking at the code.</span>
+</div>
+<sc-for list="{{drills}}" as="d" hint-placeholder-count="6">
+<label style="display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 10px; border: 1px solid #EFEFF2; border-radius: 8px; font-size: 13px"><input type="checkbox" style="width: 16px; height: 16px; accent-color: #4F46E5"><span>{{d.name}}</span><span style="margin-left: auto; font-size: 12px; color: #5F5F6B">{{d.where}}</span></label>
+</sc-for>
+</section>
+
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":860}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      drills: [
+        { name: 'Drill A — a symptom you will have to trace', where: 'Live toasts' },
+        { name: 'Drill B', where: 'Board drag & drop' },
+        { name: 'Drill C', where: 'Issue detail' },
+        { name: 'Drill D', where: 'Search' },
+        { name: 'Drill E', where: 'Theme switch' },
+        { name: 'Drill F', where: 'Comments' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

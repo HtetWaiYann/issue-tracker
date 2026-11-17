@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tracker · All issues</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#4338CA}a:hover{color:#312E81}
+input::placeholder{color:#6B6B76}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: #18181B; background: #FFFFFF; min-height: 860px; display: flex; flex-wrap: wrap; font-size: 14px">
+
+<nav aria-label="Main" style="flex: 1 1 220px; background: #F7F7F8; border-right: 1px solid #E6E6EA; padding: 16px 12px; display: flex; flex-direction: column; gap: 2px; box-sizing: border-box">
+<div style="display: flex; align-items: center; gap: 10px; padding: 4px 8px 14px">
+<div aria-hidden="true" style="width: 28px; height: 28px; border-radius: 8px; background: #4F46E5; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px">T</div>
+<div style="font-weight: 600; font-size: 15px">Tracker</div>
+<div style="margin-left: auto; font-size: 12px; color: #5F5F6B">Web Platform</div>
+</div>
+<a href="Palette.dc.html" style="display: flex; align-items: center; gap: 8px; height: 36px; padding: 0 10px; border: 1px solid #E6E6EA; border-radius: 8px; background: #FFFFFF; color: #5F5F6B; font-size: 13px; text-decoration: none; margin-bottom: 10px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg><span>Search or run a command</span><span style="margin-left: auto; font-size: 11px; border: 1px solid #E6E6EA; border-radius: 4px; padding: 1px 5px">⌘K</span></a>
+<a href="Main.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">Inbox<span style="margin-left: auto; font-size: 12px; color: #5F5F6B">4</span></a>
+<a href="Main.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">My issues<span style="margin-left: auto; font-size: 12px; color: #5F5F6B">23</span></a>
+<a href="Main.dc.html" aria-current="page" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; background: #E9E9F2; color: #18181B; font-weight: 500; text-decoration: none">All issues</a>
+<a href="Board.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">Board</a>
+<a href="Settings.dc.html" style="display: flex; align-items: center; height: 36px; padding: 0 10px; border-radius: 6px; color: #3F3F46; text-decoration: none">Settings</a>
+<div style="margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 0; border-top: 1px solid #E6E6EA">
+<div aria-hidden="true" style="width: 28px; height: 28px; border-radius: 50%; background: #4F46E5; color: #FFFFFF; font-size: 11px; font-weight: 600; display: flex; align-items: center; justify-content: center">AK</div>
+<div style="display: flex; flex-direction: column"><span style="font-weight: 500; font-size: 13px">Alex Kim</span><span style="font-size: 12px; color: #15803D">● Online</span></div>
+</div>
+</nav>
+
+<main style="flex: 999 1 560px; min-width: 0; padding: 20px 28px; box-sizing: border-box; display: flex; flex-direction: column; gap: 14px; position: relative">
+<header style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<h1 style="margin: 0; font-size: 20px; font-weight: 600">All issues</h1>
+<span style="color: #5F5F6B; font-size: 13px">10,000 issues</span>
+<div style="margin-left: auto; display: flex; gap: 8px; align-items: center">
+<div role="group" aria-label="View" style="display: flex; border: 1px solid #E6E6EA; border-radius: 8px; overflow: hidden">
+<a href="Main.dc.html" aria-current="page" style="padding: 8px 14px; background: #F1F1F6; color: #18181B; font-weight: 500; text-decoration: none; font-size: 13px">List</a>
+<a href="Board.dc.html" style="padding: 8px 14px; color: #3F3F46; text-decoration: none; font-size: 13px">Board</a>
+</div>
+<a href="Create.dc.html" style="display: flex; align-items: center; gap: 6px; padding: 9px 14px; background: #4F46E5; color: #FFFFFF; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 13px"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"></path></svg>New issue<span style="opacity: 0.8; font-size: 12px">C</span></a>
+</div>
+</header>
+
+<div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center">
+<label for="q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Filter issues</label>
+<input id="q" type="search" placeholder="Filter by title or ID…" style="flex: 0 1 280px; height: 36px; border: 1px solid #D4D4DC; border-radius: 8px; padding: 0 12px; font: inherit; font-size: 13px">
+<span style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 4px 0 10px; background: #EEF0FF; color: #312E81; border-radius: 16px; font-size: 13px">Status is In Progress, In Review<button type="button" aria-label="Remove status filter" style="width: 24px; height: 24px; border: 0; background: transparent; color: #312E81; cursor: pointer; font-size: 15px">×</button></span>
+<span style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 4px 0 10px; background: #EEF0FF; color: #312E81; border-radius: 16px; font-size: 13px">Assignee is Alex Kim<button type="button" aria-label="Remove assignee filter" style="width: 24px; height: 24px; border: 0; background: transparent; color: #312E81; cursor: pointer; font-size: 15px">×</button></span>
+<button type="button" style="height: 32px; padding: 0 12px; border: 1px dashed #B4B4BE; border-radius: 16px; background: #FFFFFF; color: #3F3F46; font: inherit; font-size: 13px; cursor: pointer">+ Filter</button>
+<button type="button" style="margin-left: auto; height: 32px; padding: 0 12px; border: 1px solid #E6E6EA; border-radius: 8px; background: #FFFFFF; color: #3F3F46; font: inherit; font-size: 13px; cursor: pointer">Sort: Priority ↓</button>
+</div>
+
+<div style="overflow-x: auto; border: 1px solid #E6E6EA; border-radius: 10px">
+<table style="width: 100%; min-width: 860px; border-collapse: collapse; font-size: 13px">
+<thead>
+<tr style="background: #FAFAFB; color: #5F5F6B; text-align: left">
+<th scope="col" style="padding: 10px 14px; font-weight: 500; width: 84px">ID</th>
+<th scope="col" style="padding: 10px 8px; font-weight: 500; width: 76px">Priority</th>
+<th scope="col" style="padding: 10px 8px; font-weight: 500">Title</th>
+<th scope="col" style="padding: 10px 8px; font-weight: 500; width: 140px">Labels</th>
+<th scope="col" style="padding: 10px 8px; font-weight: 500; width: 120px">Status</th>
+<th scope="col" style="padding: 10px 8px; font-weight: 500; width: 64px">Assignee</th>
+<th scope="col" style="padding: 10px 14px; font-weight: 500; width: 70px">Updated</th>
+</tr>
+</thead>
+<tbody>
+<sc-for list="{{rows}}" as="row" hint-placeholder-count="10">
+<tr style="border-top: 1px solid #EFEFF2; background: {{row.bg}}">
+<td style="padding: 9px 14px; color: #5F5F6B; font-variant-numeric: tabular-nums">{{row.id}}</td>
+<td style="padding: 9px 8px; color: {{row.prioColor}}; font-weight: {{row.prioWeight}}">{{row.prio}}</td>
+<td style="padding: 9px 8px"><a href="Detail.dc.html" style="color: #18181B; text-decoration: none; font-weight: 500">{{row.title}}</a></td>
+<td style="padding: 9px 8px"><span style="display: inline-block; padding: 2px 8px; border-radius: 10px; background: #F1F1F4; color: #3F3F46; font-size: 12px">{{row.label}}</span></td>
+<td style="padding: 9px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; color: #3F3F46"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: {{row.dot}}"></span>{{row.status}}</span></td>
+<td style="padding: 9px 8px"><span role="img" aria-label="{{row.who}}" style="width: 24px; height: 24px; border-radius: 50%; background: {{row.avatarBg}}; color: #FFFFFF; font-size: 10px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; border: {{row.avatarBorder}}; box-sizing: border-box">{{row.initials}}</span></td>
+<td style="padding: 9px 14px; color: #5F5F6B">{{row.updated}}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+
+<p style="margin: 0; font-size: 12px; color: #5F5F6B">Showing 1–40 of 2,314 matching · 32 rows in the DOM (virtualized) · last filter took 6 ms</p>
+
+<div role="status" style="position: absolute; right: 28px; bottom: 24px; display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: #18181B; color: #FFFFFF; border-radius: 10px; font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.18)">
+<span style="color: #86EFAC; font-size: 12px; font-weight: 600">● LIVE</span>
+<span>Mia Rossi moved ISS-1019 to Done</span>
+<a href="Detail.dc.html" style="color: #C7D2FE">View</a>
+</div>
+</main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":860}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var people = { AK: ['Alex Kim', '#4F46E5'], MR: ['Mia Rossi', '#0F766E'], JL: ['Jun Li', '#B45309'], SP: ['Sara Park', '#BE185D'] };
+    var dots = { 'Backlog': '#A1A1AA', 'Todo': '#71717A', 'In Progress': '#D97706', 'In Review': '#4F46E5', 'Done': '#16A34A' };
+    var data = [
+      ['ISS-1042', 'Urgent', 'Search input lags when typing with 10k issues loaded', 'perf', 'In Progress', 'AK', '2m'],
+      ['ISS-1039', 'High', 'Card drops into the wrong column after a filter change', 'bug', 'In Review', 'MR', '18m'],
+      ['ISS-1037', 'High', 'WebSocket handler shows stale assignee names', 'realtime', 'Todo', 'JL', '1h'],
+      ['ISS-1031', 'Medium', 'Keyboard navigation for the command palette', 'a11y', 'In Progress', 'AK', '3h'],
+      ['ISS-1028', 'Medium', 'Undo does not restore label order', 'bug', 'Todo', '', '5h'],
+      ['ISS-1024', 'Low', 'Lazy-load the markdown editor bundle', 'perf', 'Backlog', 'SP', '1d'],
+      ['ISS-1019', 'Medium', 'Roll back optimistic status change on a 500', 'realtime', 'Done', 'MR', '1d'],
+      ['ISS-1016', 'High', 'IssueRow re-renders on every socket message', 'perf', 'In Progress', 'JL', '2d'],
+      ['ISS-1011', 'Low', 'Persist filters to the URL', 'feature', 'Done', 'AK', '3d'],
+      ['ISS-1008', 'Medium', 'Error boundary around the comments panel', 'feature', 'In Review', 'SP', '4d'],
+      ['ISS-1003', 'Low', 'Dark theme contrast for muted labels', 'design', 'Backlog', '', '5d'],
+      ['ISS-0998', 'Medium', 'Offline queue loses edits on reload', 'bug', 'Todo', 'MR', '6d']
+    ];
+    var rows = data.map(function (d, i) {
+      var p = people[d[5]];
+      return {
+        id: d[0], prio: d[1], title: d[2], label: d[3], status: d[4], updated: d[6],
+        prioColor: d[1] === 'Urgent' ? '#C2410C' : '#3F3F46',
+        prioWeight: d[1] === 'Urgent' ? '600' : '400',
+        dot: dots[d[4]],
+        initials: p ? d[5] : '',
+        who: p ? p[0] : 'Unassigned',
+        avatarBg: p ? p[1] : 'transparent',
+        avatarBorder: p ? '0' : '1.5px dashed #A1A1AA',
+        bg: i === 3 ? '#F4F4FF' : '#FFFFFF'
+      };
+    });
+    return { rows: rows };
+  }
+}
+</script>
+</body>
+</html>
