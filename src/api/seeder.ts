@@ -1,8 +1,10 @@
 import { faker } from "@faker-js/faker";
 import {
     LABELS,
+    type Activity,
     type CalendarDate,
     type Issue,
+    type IssueComment,
     type IssueId,
     type Priority,
     type Status,
@@ -44,32 +46,31 @@ const PRIORITY_WEIGHTS: { weight: number; value: Priority }[] = [
     { weight: 30, value: "Low" },
 ];
 
-function reset(seedOffset: number) {
+const reset = (seedOffset: number) => {
     // Re-seed on every call, so calling twice gives identical output,
     // not "the next 10k values in the sequence".
     faker.seed(SEED + seedOffset);
     faker.setDefaultRefDate(REF_DATE);
-}
+};
 
-export function generateUsers(count = 8): User[] {
+export const generateUsers = (count = 8): User[] => {
     reset(0);
     return Array.from({ length: count }, (_, i) => ({
         id: `u-${i + 1}`, // readable and stable; uuids make debugging painful
         name: faker.person.fullName(), // "Mia Rossi", so initials can be derived
         avatarColor: AVATAR_COLORS[i % AVATAR_COLORS.length],
     }));
-}
+};
 
-function title(): string {
+const title = (): string => {
     const phrase = `${faker.hacker.verb()} the ${faker.hacker.adjective()} ${faker.hacker.noun()}`;
     return phrase.charAt(0).toUpperCase() + phrase.slice(1);
-}
+};
 
-function toCalendarDate(date: Date): CalendarDate {
-    return date.toISOString().slice(0, 10); // "2026-11-28"
-}
+const toCalendarDate = (date: Date): CalendarDate =>
+    date.toISOString().slice(0, 10); // "2026-11-28"
 
-export function generateIssues(count: number, users: User[]): Issue[] {
+export const generateIssues = (count: number, users: User[]): Issue[] => {
     reset(1);
     const issues: Issue[] = [];
     const topLevelIds: IssueId[] = []; // candidates for parentId: only top-level, so no deep nesting or cycles
@@ -123,4 +124,56 @@ export function generateIssues(count: number, users: User[]): Issue[] {
     }
 
     return issues;
-}
+};
+
+export const generateComments = (
+    issues: Issue[],
+    users: User[],
+): IssueComment[] => {
+    reset(2);
+    let n = 0;
+    return issues.flatMap((issue) =>
+        Array.from({ length: faker.number.int({ min: 0, max: 3 }) }, () => ({
+            id: `c-${++n}`,
+            issueId: issue.id,
+            authorId: faker.helpers.arrayElement(users).id,
+            body: faker.hacker.phrase(),
+            createdAt: faker.date
+                .between({ from: issue.createdAt, to: REF_DATE })
+                .toISOString(),
+        })),
+    );
+};
+
+// Minimal history that agrees with the issue's current state: created, then moved out of Backlog.
+export const generateActivity = (
+    issues: Issue[],
+    users: User[],
+): Activity[] => {
+    reset(3);
+    let n = 0;
+    return issues.flatMap((issue): Activity[] => {
+        const base = {
+            issueId: issue.id,
+            actorId: faker.helpers.arrayElement(users).id,
+        };
+        const created: Activity = {
+            ...base,
+            id: `a-${++n}`,
+            at: issue.createdAt,
+            type: "created",
+        };
+        if (issue.status === "Backlog") return [created];
+        return [
+            created,
+            {
+                ...base,
+                id: `a-${++n}`,
+                at: issue.updatedAt,
+                type: "statusChanged",
+                from: "Backlog",
+                to: issue.status,
+            },
+        ];
+    });
+};
