@@ -79,6 +79,9 @@ const findIssue = (id: IssueId): Issue => {
 
 const now = () => new Date().toISOString();
 
+export const getCurrentUser = (options?: RequestOptions) =>
+    respond(() => users[0], options, undefined);
+
 export const getUsers = (options?: RequestOptions) =>
     respond(() => users, options, []);
 

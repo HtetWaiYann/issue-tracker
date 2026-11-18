@@ -5,10 +5,10 @@ import { Link } from "react-router";
 export type NavKey = "inbox" | "my" | "all" | "board" | "settings";
 
 export type SidebarProps = {
-    current: NavKey; // TODO(you): derive from the current route (1.2)
+    current: NavKey;
     inboxCount: number;
     myIssuesCount: number;
-    user: RowAssignee; // TODO(you): from the current-user context (1.8)
+    user: RowAssignee;
     isOnline: boolean; // TODO(you): from useSyncExternalStore (3.3)
     onOpenPalette: () => void; // TODO(you): open the command palette (3.5)
 };
@@ -16,8 +16,8 @@ export type SidebarProps = {
 // TODO(you): swap hrefs/<a> for your router's links (1.2)
 const ITEMS: { key: NavKey; label: string; href: string }[] = [
     { key: "inbox", label: "Inbox", href: "/inbox" },
-    { key: "my", label: "My issues", href: "/my-issues" },
-    { key: "all", label: "All issues", href: "/issues" },
+    { key: "my", label: "My issues", href: "/my" },
+    { key: "all", label: "All issues", href: "/all" },
     { key: "board", label: "Board", href: "/board" },
     { key: "settings", label: "Settings", href: "/settings" },
 ];
