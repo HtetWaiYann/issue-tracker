@@ -1,9 +1,10 @@
 import { Avatar } from "@/components/ui/Avatar";
 import type { RowAssignee } from "@/features/issues/IssueRow";
+import { Link } from "react-router";
 
 export type NavKey = "inbox" | "my" | "all" | "board" | "settings";
 
-type SidebarProps = {
+export type SidebarProps = {
     current: NavKey; // TODO(you): derive from the current route (1.2)
     inboxCount: number;
     myIssuesCount: number;
@@ -53,9 +54,9 @@ export function Sidebar({ current, inboxCount, myIssuesCount, user, isOnline, on
             </button>
 
             {ITEMS.map((item) => (
-                <a
+                <Link
                     key={item.key}
-                    href={item.href}
+                    to={item.href}
                     aria-current={item.key === current ? "page" : undefined}
                     className={`flex h-9 items-center rounded-md px-2.5 ${FOCUS} ${
                         item.key === current
@@ -67,7 +68,7 @@ export function Sidebar({ current, inboxCount, myIssuesCount, user, isOnline, on
                     {counts[item.key] !== undefined && (
                         <span className="ml-auto text-xs text-zinc-500 dark:text-zinc-400">{counts[item.key]}</span>
                     )}
-                </a>
+                </Link>
             ))}
 
             <div className="mt-auto flex items-center gap-2.5 border-t border-zinc-200 px-2 pt-3 dark:border-zinc-800 max-md:mt-3">

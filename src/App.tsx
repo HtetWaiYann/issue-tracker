@@ -1,40 +1,22 @@
-import type { RowAssignee } from "@/features/issues/IssueRow";
-import { AppShell } from "@/layout/AppShell";
-import { Sidebar } from "@/layout/Sidebar";
-import { IssuesHeader } from "@/features/issues/IssuesHeader";
-import { IssuesToolbar } from "@/features/issues/IssuesToolbar";
-
-const AK: RowAssignee = { name: "Alex Kim", initials: "AK", color: "#4F46E5" };
+import { Route, Routes } from "react-router";
+import { IssuesPage } from "@/features/issues/IssuesPage";
+import { BoardPage } from "./features/board/BoardPage";
+import { SettingsPage } from "./features/settings/SettingsPage";
+import { RootLayout } from "./layout/RootLayout";
 
 function App() {
     return (
-        <AppShell
-            sidebar={
-                <Sidebar
-                    current="all"
-                    inboxCount={4}
-                    myIssuesCount={23}
-                    user={AK}
-                    isOnline
-                    onOpenPalette={() => {}}
-                />
-            }
-        >
-            <IssuesHeader
-                title="All issues"
-                countLabel="10,000 issues"
-                view="list"
-                onNewIssue={() => {}}
-            />
-            <IssuesToolbar
-                query=""
-                onQueryChange={() => {}}
-                chips={[]}
-                onAddFilter={() => {}}
-                sortLabel="Priority ↓"
-                onSortClick={() => {}}
-            />
-        </AppShell>
+        <Routes>
+            <Route element={<RootLayout />}>
+                <Route path="/" element={<IssuesPage />} />
+                <Route path="/inbox" element={<IssuesPage />} />
+                <Route path="/my-issues" element={<IssuesPage />} />
+                <Route path="/board" element={<BoardPage />} />
+                <Route path="/settings" element={<SettingsPage />} />
+
+                <Route path="*" element={<IssuesPage />} />
+            </Route>
+        </Routes>
     );
 }
 
