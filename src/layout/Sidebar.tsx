@@ -2,7 +2,8 @@ import { Avatar } from "@/components/ui/Avatar";
 import type { RowAssignee } from "@/features/issues/IssueRow";
 import { Link } from "react-router";
 
-export type NavKey = "inbox" | "my" | "all" | "board" | "settings";
+export const NAVKEYS = ["inbox" , "my" , "all" , "board" , "settings"] as const;
+export type NavKey = (typeof NAVKEYS)[number];
 
 export type SidebarProps = {
     current: NavKey;
@@ -13,7 +14,6 @@ export type SidebarProps = {
     onOpenPalette: () => void; // TODO(you): open the command palette (3.5)
 };
 
-// TODO(you): swap hrefs/<a> for your router's links (1.2)
 const ITEMS: { key: NavKey; label: string; href: string }[] = [
     { key: "inbox", label: "Inbox", href: "/inbox" },
     { key: "my", label: "My issues", href: "/my" },

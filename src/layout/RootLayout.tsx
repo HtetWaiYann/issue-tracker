@@ -3,13 +3,15 @@ import { AppShell } from "./AppShell";
 import type { RowAssignee } from "@/features/issues/IssueRow";
 import { getCurrentUser } from "@/api/api";
 import { useEffect, useState } from "react";
-import type { NavKey } from "./Sidebar";
+import { NAVKEYS, type NavKey } from "./Sidebar";
 
 export function RootLayout() {
     const [currentUser, setCurrentUser] = useState<RowAssignee>();
     const [currentUserError, setCurrentUserError] = useState("");
     const location = useLocation();
-    const current = (location.pathname.replace("/", "")) as NavKey;
+
+    const current = location.pathname.slice(1);
+    const isNavKey = (value: string): value is NavKey => NAVKEYS.includes(value as NavKey);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -25,7 +27,7 @@ export function RootLayout() {
                     initials: initials,
                     color: user.avatarColor,
                 });
-            } catch (e) {
+            } catch {
                 setCurrentUserError("Current user not found");
             }
         };
@@ -42,7 +44,7 @@ export function RootLayout() {
 
     return (
         <AppShell
-            current={current}
+            current={isNavKey(current) ?  current : 'all'}
             inboxCount={4}
             myIssuesCount={23}
             user={currentUser}

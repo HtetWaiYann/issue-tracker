@@ -86,7 +86,7 @@ export const getUsers = (options?: RequestOptions) =>
     respond(() => users, options, []);
 
 export const getIssues = (options?: RequestOptions) =>
-    respond(() => issues, options, []);
+    respond(() => issues.slice(0, 200), options, []);
 
 export const getIssue = (id: IssueId, options?: RequestOptions) =>
     respond(() => findIssue(id), options);

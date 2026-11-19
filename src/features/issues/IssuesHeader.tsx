@@ -1,6 +1,8 @@
+import { Link } from "react-router";
+
 type IssuesHeaderProps = {
     title: string; // "All issues", "My issues"…
-    countLabel: string; // TODO(you): e.g. "10,000 issues", formatted from the real count
+    countLabel: string;
     view: "list" | "board"; // TODO(you): derive from the current route (1.2)
     onNewIssue: () => void; // TODO(you): open the create modal (4.1); also bind the C shortcut
 };
@@ -15,14 +17,13 @@ export function IssuesHeader({ title, countLabel, view, onNewIssue }: IssuesHead
             <h1 className="text-xl font-semibold">{title}</h1>
             <span className="text-[13px] text-zinc-500 dark:text-zinc-400">{countLabel}</span>
             <div className="ml-auto flex items-center gap-2">
-                {/* TODO(you): swap <a> for your router's link once routing exists (1.2) */}
                 <nav aria-label="View" className="flex overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-800">
-                    <a href="/issues" aria-current={view === "list" ? "page" : undefined} className={`${TAB} ${view === "list" ? TAB_CURRENT : TAB_IDLE}`}>
+                    <Link to="/all" aria-current={view === "list" ? "page" : undefined} className={`${TAB} ${view === "list" ? TAB_CURRENT : TAB_IDLE}`}>
                         List
-                    </a>
-                    <a href="/board" aria-current={view === "board" ? "page" : undefined} className={`${TAB} ${view === "board" ? TAB_CURRENT : TAB_IDLE}`}>
+                    </Link>
+                    <Link to="/board" aria-current={view === "board" ? "page" : undefined} className={`${TAB} ${view === "board" ? TAB_CURRENT : TAB_IDLE}`}>
                         Board
-                    </a>
+                    </Link>
                 </nav>
                 <button
                     type="button"
