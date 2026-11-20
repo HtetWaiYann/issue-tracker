@@ -26,3 +26,11 @@ dist-ssr
 CLAUDE.md
 PROGRESS.md
 .playwright-mcp/
+
+# Phase 8 secrets (only server/.env.example is tracked)
+server/.env
+server/.env.*
+!server/.env.example
+
+# Drill answers (Phase 6), never committed
+.drills/

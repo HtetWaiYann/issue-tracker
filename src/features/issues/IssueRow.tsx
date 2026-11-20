@@ -13,9 +13,9 @@ export type RowAssignee = {
 type IssueRowProps = {
     issue: Issue;
     assignee: RowAssignee | null;
-    updatedLabel: string; // TODO(you): format issue.updatedAt as "2m", "1h", "3d"
-    href: string; // TODO(you): build the detail URL once routing exists (1.2)
-    isSelected: boolean; // TODO(you): the keyboard-selected row
+    updatedLabel: string;
+    href: string;
+    isSelected: boolean;
 };
 
 export function IssueRow({
@@ -26,34 +26,6 @@ export function IssueRow({
     isSelected,
 }: IssueRowProps) {
     const isUrgent = issue.priority === "Urgent";
-
-    const formatUpdatedAt = (updatedLabel: string) => {
-        try {
-            const dateObj = new Date(updatedLabel);
-            const diff = Date.now() - dateObj.getTime();
-
-            if (isNaN(dateObj.getTime()) || diff < 0) return "Unknown";
-
-            const minutes = Math.floor(diff / 60_000);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-
-            if (minutes < 1) return "Just now";
-            if (minutes < 60) return `${minutes}m`;
-            if (hours < 24) return `${hours}h`;
-            if (days < 30) return `${days}d`;
-
-            const months = Math.floor(days / 30);
-            if (months < 12) return `${months}mo`;
-
-            const years = Math.floor(days / 365);
-            return `${years}y`;
-        } catch {
-            return "Unknown";
-        }
-    };
-
-    const formattedDate = formatUpdatedAt(updatedLabel);
 
     return (
         <tr
@@ -97,7 +69,7 @@ export function IssueRow({
                 {assignee ? <Avatar {...assignee} /> : <UnassignedAvatar />}
             </td>
             <td className="px-3.5 py-2 text-zinc-500 dark:text-zinc-400">
-                <time dateTime={formattedDate}>{formattedDate}</time>
+                <time dateTime={issue.updatedAt}>{updatedLabel}</time>
             </td>
         </tr>
     );
