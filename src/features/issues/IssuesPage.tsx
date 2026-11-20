@@ -13,6 +13,7 @@ import { IssueList } from "@/features/issues/IssueList";
 import { IssueRow, type RowAssignee } from "@/features/issues/IssueRow";
 import { IssuesHeader } from "@/features/issues/IssuesHeader";
 import { IssuesToolbar } from "@/features/issues/IssuesToolbar";
+import { matchesQuery } from "@/lib/issues";
 import { formatRelative } from "@/lib/time";
 import { toRowAssignee } from "@/lib/user";
 import { useEffect, useState } from "react";
@@ -31,8 +32,12 @@ export function IssuesPage() {
     const [error, setError] = useState<string | null>(null);
     const [selectedId, setSelectedId] = useState<IssueId | null>(null);
 
+    const [query, setQuery] = useState("");
+    const q = query.trim().toLowerCase();
     const list = issues ?? [];
     const countLabel = `${list.length.toLocaleString()} issues`;
+
+    const visible = list.filter((issue) => matchesQuery(issue, q)); // derived, no useEffect
 
     useEffect(() => {
         let ignore = false;
@@ -92,8 +97,8 @@ export function IssuesPage() {
                 onNewIssue={noop}
             />
             <IssuesToolbar
-                query=""
-                onQueryChange={noop}
+                query={query}
+                onQueryChange={(e) => setQuery(e.target.value)}
                 chips={null}
                 onAddFilter={noop}
                 sortLabel="Priority ↓"
@@ -106,22 +111,29 @@ export function IssuesPage() {
             ) : issues === null ? (
                 <p className="text-zinc-500">Loading issues…</p>
             ) : (
-                <IssueList>
-                    {issues.map((issue) => (
-                        <IssueRow
-                            key={issue.id}
-                            issue={issue}
-                            assignee={
-                                issue.assigneeId
-                                    ? (usersById.get(issue.assigneeId) ?? null)
-                                    : null
-                            }
-                            updatedLabel={formatRelative(issue.updatedAt)}
-                            href={`/issues/${issue.id}`}
-                            isSelected={issue.id === selectedId}
-                        />
-                    ))}
-                </IssueList>
+                <>
+                    <IssueList>
+                        {visible.map((issue) => (
+                            <IssueRow
+                                key={issue.id}
+                                issue={issue}
+                                assignee={
+                                    issue.assigneeId
+                                        ? (usersById.get(issue.assigneeId) ??
+                                          null)
+                                        : null
+                                }
+                                updatedLabel={formatRelative(issue.updatedAt)}
+                                href={`/issues/${issue.id}`}
+                                isSelected={issue.id === selectedId}
+                            />
+                        ))}
+                    </IssueList>
+                    <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                        Showing {visible.length.toLocaleString()} of{" "}
+                        {list.length.toLocaleString()}
+                    </p>
+                </>
             )}
         </>
     );
