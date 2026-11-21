@@ -49,7 +49,7 @@ export function IssueRow({
             </td>
             <td className="px-2 py-2">
                 <Link
-                    to={`/issues/${href}`}
+                    to={href}
                     className="rounded font-medium text-zinc-900 hover:text-indigo-700 focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:outline-none dark:text-zinc-100 dark:hover:text-indigo-300"
                 >
                     {issue.title}
