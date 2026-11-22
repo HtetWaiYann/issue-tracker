@@ -1,31 +1,30 @@
 import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent } from "react";
 import { IssueDetailLayout } from "./detail/IssueDetailLayout";
-import { type Activity, type Issue, type UserId } from "@/api/types";
-import type { RowAssignee } from "./IssueRow";
-import { getActivity, getIssue, getUsers, updateIssue } from "@/api/api";
-import { toRowAssignee } from "@/lib/user";
+import { type Activity, type Issue } from "@/api/types";
+import { getActivity, getIssue, updateIssue } from "@/api/api";
 import { IssueProperties } from "./detail/IssueProperties";
 import { IssueDescription } from "./detail/IssueDescription";
 import { IssueBreadcrumb } from "./detail/IssueBreadcrumb";
 import { IssueTitle } from "./detail/IssueTitle";
 import { formatDay } from "@/lib/time";
 import { flushSync } from "react-dom";
+import { useUsers } from "@/state/UsersContext";
 
 export function IssueDetailPage({ id }: { id: string }) {
     const [issue, setIssue] = useState<Issue>();
     const [activity, setActivity] = useState<Activity[]>([]);
-    const [users, setUsers] = useState<Map<UserId, RowAssignee>>(new Map());
     const [error, setError] = useState<string | null>(null);
+
+    const { assigneesById } = useUsers();
 
     useEffect(() => {
         let ignore = false;
-        Promise.all([getIssue(id), getActivity(id), getUsers()])
-            .then(([issue, activity, users]) => {
+        Promise.all([getIssue(id), getActivity(id)])
+            .then(([issue, activity]) => {
                 if (ignore) return;
                 setIssue(issue);
                 setActivity(activity);
-                setUsers(new Map(users.map((u) => [u.id, toRowAssignee(u)])));
             })
             .catch((e: Error) => {
                 if (!ignore)
@@ -112,7 +111,7 @@ export function IssueDetailPage({ id }: { id: string }) {
     if (!issue) return <p className="text-zinc-500">Loading…</p>;
 
     const assignee = issue.assigneeId
-        ? (users.get(issue.assigneeId) ?? null)
+        ? (assigneesById.get(issue.assigneeId) ?? null)
         : null;
 
     return (

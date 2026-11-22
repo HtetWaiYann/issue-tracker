@@ -1,3 +1,7 @@
+import { ThemeSwitch } from "@/components/ui/ThemeSwitch";
+import { useTheme } from "@/state/ThemeContext";
+
 export function SettingsPage() {
-    return <div>Settings</div>;
+    const { theme, setTheme } = useTheme();
+    return <ThemeSwitch value={theme} onChange={setTheme} />;
 }

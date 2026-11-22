@@ -1,34 +1,24 @@
-import { getIssues, getUsers } from "@/api/api";
+import { getIssues } from "@/api/api";
 import type {
     Issue,
     IssueId,
-    Label,
-    Priority,
-    Status,
-    User,
-    UserId,
 } from "@/api/types";
-import { FilterChip } from "@/components/ui/FilterChip";
 import { IssueList } from "@/features/issues/IssueList";
 import { IssueRow, type RowAssignee } from "@/features/issues/IssueRow";
 import { IssuesHeader } from "@/features/issues/IssuesHeader";
 import { IssuesToolbar } from "@/features/issues/IssuesToolbar";
 import { matchesQuery } from "@/lib/issues";
 import { formatRelative } from "@/lib/time";
-import { toRowAssignee } from "@/lib/user";
+import { useUsers } from "@/state/UsersContext";
 import { useEffect, useState } from "react";
 
 const noop = () => {};
 
-interface AIssue extends Issue {
-    assignee: RowAssignee | null;
-}
-
 export function IssuesPage() {
     const [issues, setIssues] = useState<Issue[] | null>(null); // null = not loaded yet
-    const [usersById, setUsersById] = useState<Map<UserId, RowAssignee>>(
-        new Map(),
-    );
+
+    const { assigneesById } = useUsers();
+
     const [error, setError] = useState<string | null>(null);
     const [selectedId, setSelectedId] = useState<IssueId | null>(null);
 
@@ -41,15 +31,11 @@ export function IssuesPage() {
 
     useEffect(() => {
         let ignore = false;
-        Promise.all([getIssues(), getUsers()])
-            .then(([issues, users]) => {
+
+        Promise.resolve(getIssues())
+            .then((issues) => {
                 if (ignore) return;
                 setIssues(issues);
-                setUsersById(
-                    new Map(
-                        users.map((user) => [user.id, toRowAssignee(user)]),
-                    ),
-                );
             })
             .catch(() => {
                 if (!ignore)
@@ -119,8 +105,9 @@ export function IssuesPage() {
                                 issue={issue}
                                 assignee={
                                     issue.assigneeId
-                                        ? (usersById.get(issue.assigneeId) ??
-                                          null)
+                                        ? (assigneesById.get(
+                                              issue.assigneeId,
+                                          ) ?? null)
                                         : null
                                 }
                                 updatedLabel={formatRelative(issue.updatedAt)}

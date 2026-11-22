@@ -10,10 +10,15 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const [theme, setTheme] = useState<Theme>(readTheme);
     useEffect(() => {
         localStorage.setItem("theme", theme);
-        const media = matchMedia("(prefer-color-schme: dark)");
+        const media = matchMedia("(prefers-color-scheme: dark)");
         const apply = () => {
-            document.documentElement.classList.toggle("dark", theme === "dark");
+            document.documentElement.classList.toggle(
+                "dark",
+                theme === "dark" || (theme == "system" && media.matches),
+            );
         };
+
+        apply();
 
         if (theme != "system") {
             return;
